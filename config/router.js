@@ -6,9 +6,9 @@ import Me from '../screens/Me';
 
 
 import Settings from '../screens/Settings';
+import UserDetail from '../screens/UserDetail';
 
 
- // **** remember to import UserDetail here *****
 
 
 export const MeStack = StackNavigator({
@@ -27,16 +27,25 @@ export const MeStack = StackNavigator({
 
 
   export const FeedStack = StackNavigator({
-    // Nest the components you would like.  Maybe feed and userdetail?
-
+    Feed: {
+    screen: Feed,
+    navigationOptions: {
+      title: 'Feed',
+    },
+  },
+    Details: {
+      screen: UserDetail,
+      navigationOptions: ({ navigation }) => ({
+        title: `${navigation.state.params.name.first.toUpperCase()} ${navigation.state.params.name.last.toUpperCase()}`,
+      }),
+    },
   });
 
 
 
 export const Tabs = TabNavigator({
   Feed: {
-    // You might wanna update the screen below 
-    screen: Feed,
+    screen: FeedStack,
     navigationOptions: {
       tabBarLabel: 'Feed',
     },
