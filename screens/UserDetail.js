@@ -4,7 +4,6 @@ import { Tile, List, ListItem } from 'react-native-elements';
 
 class UserDetail extends Component {
   render() {
-    debugger
     console.log('Who is this?')
     const { picture, name, email, phone, login, dob, location } = this.props.navigation.state.params;
 
