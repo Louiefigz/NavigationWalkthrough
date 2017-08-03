@@ -4,6 +4,10 @@ import { List, ListItem } from 'react-native-elements';
 
 class Settings extends Component {
 
+  handlePress(){
+    this.props.navigation.navigate('Feed'); 
+  }
+
   render() {
     return (
       <View>
@@ -11,6 +15,7 @@ class Settings extends Component {
         <List>
           <ListItem
             title="Notifications"
+            onPress={(e)=> this.handlePress(e)}
           />
           <ListItem
             title="Profile"
@@ -26,7 +31,7 @@ class Settings extends Component {
           />
         </List>
       </ScrollView>
-      
+
       </View>
     );
   }
