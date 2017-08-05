@@ -39,7 +39,7 @@ class Me extends Component {
            });
     }
 
-     RNInstagramOAuth('35666c98870840a7a72b628e2f8aa11e', 'http://localhost:8081/auth/instagram/callback', (err, access_token) => {
+     RNInstagramOAuth('35666c98870840a7a72b628e2f8aa11e', 'http://localhost:3000/auth/instagram/callback', (err, access_token) => {
         if (err) { console.log(err) }
         if (access_token !== undefined) {
             console.log(access_token);
