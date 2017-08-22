@@ -25,49 +25,49 @@ class EditMeProfile extends Component {
    }
 
 
-
-  showValues = () => {
-    const firstValue = `First input: ${this.refs.firstInput.value()}\n`;
-    const secondValue = `Second input: ${this.refs.secondInput.value()}\n`;
-    const thirdValue = `Third input: ${this.refs.thirdInput.value()}\n`;
-    const fourthValue = `Fourth input: ${this.refs.fourthInput.value()}\n`;
-    const fifthValue = `Fifth input: ${this.refs.fifthInput.value()}\n`;
-    const sixthValue = `Sixth input: ${this.refs.sixthInput.value()}\n`;
-
-    const text = firstValue + secondValue + thirdValue + fourthValue + fifthValue + sixthValue;
-
-    Alert.alert(
-      'Values',
-      text
-    );
-  }
-
-  areValid = () => {
-    const firstValid = `First input: ${!!this.refs.firstInput.valid()}\n`;
-    const secondValid = `Second input: ${!!this.refs.secondInput.valid()}\n`;
-    const thirdValid = `Third input: ${!!this.refs.thirdInput.valid()}\n`;
-    const fourthValid = `Fourth input: ${!!this.refs.fourthInput.valid()}\n`;
-    const fifthValid = `Fifth input: ${!!this.refs.fifthInput.valid()}\n`;
-
-    const text = firstValid + secondValid + thirdValid + fourthValid + fifthValid;
-
-    Alert.alert(
-      'Valid?',
-      text
-    );
-  }
-
-  showErrors = () => {
-    this.refs.firstInput.showError();
-    this.refs.secondInput.showError();
-    this.refs.thirdInput.showError();
-    this.refs.fourthInput.showError();
-    this.refs.fifthInput.showError();
-  }
-
-  switchChanged = (value) => {
-    alert(value);
-  }
+  //
+  // showValues = () => {
+  //   const firstValue = `First input: ${this.refs.firstInput.value()}\n`;
+  //   const secondValue = `Second input: ${this.refs.secondInput.value()}\n`;
+  //   const thirdValue = `Third input: ${this.refs.thirdInput.value()}\n`;
+  //   const fourthValue = `Fourth input: ${this.refs.fourthInput.value()}\n`;
+  //   const fifthValue = `Fifth input: ${this.refs.fifthInput.value()}\n`;
+  //   const sixthValue = `Sixth input: ${this.refs.sixthInput.value()}\n`;
+  //
+  //   const text = firstValue + secondValue + thirdValue + fourthValue + fifthValue + sixthValue;
+  //
+  //   Alert.alert(
+  //     'Values',
+  //     text
+  //   );
+  // }
+  //
+  // areValid = () => {
+  //   const firstValid = `First input: ${!!this.refs.firstInput.valid()}\n`;
+  //   const secondValid = `Second input: ${!!this.refs.secondInput.valid()}\n`;
+  //   const thirdValid = `Third input: ${!!this.refs.thirdInput.valid()}\n`;
+  //   const fourthValid = `Fourth input: ${!!this.refs.fourthInput.valid()}\n`;
+  //   const fifthValid = `Fifth input: ${!!this.refs.fifthInput.valid()}\n`;
+  //
+  //   const text = firstValid + secondValid + thirdValid + fourthValid + fifthValid;
+  //
+  //   Alert.alert(
+  //     'Valid?',
+  //     text
+  //   );
+  // }
+  //
+  // showErrors = () => {
+  //   this.refs.firstInput.showError();
+  //   this.refs.secondInput.showError();
+  //   this.refs.thirdInput.showError();
+  //   this.refs.fourthInput.showError();
+  //   this.refs.fifthInput.showError();
+  // }
+  //
+  // switchChanged = (value) => {
+  //   alert(value);
+  // }
 
 
 
@@ -115,7 +115,7 @@ finishForm(e){
   var setUsername = this.state.username == "" ? login.username : this.state.username;
   var setPhone = this.state.phone == "" ? phone : this.state.phone;
   var setLocation = this.state.location = "" ? location.city : this.state.city;
-  var bday = dob.split(" "); 
+  var bday = dob.split(" ");
 
 
   var obj = {
@@ -133,11 +133,7 @@ finishForm(e){
     dob: bday[0],
     phone: setPhone
   }
-
-
-
-  this.props.navigation.navigate('Me', obj );
-
+  // This should save onto Redux somehow...
 
 }
 
@@ -253,17 +249,5 @@ const styles = StyleSheet.create({
 
 });
 
-
-// <View>
-//   <TouchableOpacity onPress={this.showValues}>
-//     <Text style={styles.action}>SHOW VALUES</Text>
-//   </TouchableOpacity>
-//   <TouchableOpacity onPress={this.areValid}>
-//     <Text style={styles.action}>VALID?</Text>
-//   </TouchableOpacity>
-//   <TouchableOpacity onPress={this.showErrors}>
-//     <Text style={styles.action}>SHOW ERRORS</Text>
-//   </TouchableOpacity>
-// </View>
 
 export default EditMeProfile;
