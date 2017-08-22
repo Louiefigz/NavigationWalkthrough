@@ -25,51 +25,6 @@ class EditMeProfile extends Component {
    }
 
 
-  //
-  // showValues = () => {
-  //   const firstValue = `First input: ${this.refs.firstInput.value()}\n`;
-  //   const secondValue = `Second input: ${this.refs.secondInput.value()}\n`;
-  //   const thirdValue = `Third input: ${this.refs.thirdInput.value()}\n`;
-  //   const fourthValue = `Fourth input: ${this.refs.fourthInput.value()}\n`;
-  //   const fifthValue = `Fifth input: ${this.refs.fifthInput.value()}\n`;
-  //   const sixthValue = `Sixth input: ${this.refs.sixthInput.value()}\n`;
-  //
-  //   const text = firstValue + secondValue + thirdValue + fourthValue + fifthValue + sixthValue;
-  //
-  //   Alert.alert(
-  //     'Values',
-  //     text
-  //   );
-  // }
-  //
-  // areValid = () => {
-  //   const firstValid = `First input: ${!!this.refs.firstInput.valid()}\n`;
-  //   const secondValid = `Second input: ${!!this.refs.secondInput.valid()}\n`;
-  //   const thirdValid = `Third input: ${!!this.refs.thirdInput.valid()}\n`;
-  //   const fourthValid = `Fourth input: ${!!this.refs.fourthInput.valid()}\n`;
-  //   const fifthValid = `Fifth input: ${!!this.refs.fifthInput.valid()}\n`;
-  //
-  //   const text = firstValid + secondValid + thirdValid + fourthValid + fifthValid;
-  //
-  //   Alert.alert(
-  //     'Valid?',
-  //     text
-  //   );
-  // }
-  //
-  // showErrors = () => {
-  //   this.refs.firstInput.showError();
-  //   this.refs.secondInput.showError();
-  //   this.refs.thirdInput.showError();
-  //   this.refs.fourthInput.showError();
-  //   this.refs.fifthInput.showError();
-  // }
-  //
-  // switchChanged = (value) => {
-  //   alert(value);
-  // }
-
-
 
 
 phoneNumber(e){
@@ -154,7 +109,7 @@ finishForm(e){
                   onChangeText={(e)=>this.changeFirstName(e)}
                   value={this.state.FirstName}/>
 
-      <InputText ref="firstInput"
+      <InputText ref="secondInput"
                  required type="withLabel"
                  label="Last Name"
                  placeholder={name.last}
@@ -162,7 +117,7 @@ finishForm(e){
                  value={this.state.LastName}
                  />
 
-       <InputText ref="firstInput"
+       <InputText ref="thirdInput"
                   required type="withLabel"
                   label="email"
                   placeholder={email}
@@ -170,12 +125,12 @@ finishForm(e){
                   value={this.state.email}
                   />
 
-       <InputText ref="firstInput" required type="withLabel"
+       <InputText ref="fourthInput" required type="withLabel"
                   keyboardType="numeric"
                   label="phone" placeholder={phone}
                   nChange={(e)=>this.phoneNumber(e)}/>
 
-      <InputText ref="firstInput" required type="withLabel"
+      <InputText ref="fifthInput" required type="withLabel"
                  label="Username" placeholder={login.username}
                  nChange={(e)=>this.username(e)}/>
 
