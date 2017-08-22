@@ -7,6 +7,7 @@ import Me from '../screens/Me';
 
 import Settings from '../screens/Settings';
 import UserDetail from '../screens/UserDetail';
+import EditMe from '../screens/EditMeProfile';
 
 
 
@@ -20,8 +21,13 @@ export const MeStack = StackNavigator({
   },
   Settings: {
     screen: Settings,
-
   },
+  Edit: {
+    screen: EditMe,
+    navigationOptions:{
+      title: 'Edit Profile'
+    }, 
+  }
 });
 
 

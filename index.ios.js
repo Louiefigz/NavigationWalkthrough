@@ -16,5 +16,8 @@ export default class NavigationWalkthrough extends Component {
   }
 }
 
+// initialize your redux object with the information from config/data.
+
+
 
 AppRegistry.registerComponent('NavigationWalkthrough', () => NavigationWalkthrough);
