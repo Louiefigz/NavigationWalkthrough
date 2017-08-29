@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { ScrollView, TextInput, button, form,} from 'react-native';
 import { InputText, InputCountrySelector, InputSwitch } from 'react-native-input-list';
 import { StyleSheet, Text, View, TouchableOpacity, Alert } from 'react-native';
-import {Button} from 'react-native-elements';
+// changes
+import {Button, Tile} from 'react-native-elements';
 
 import DatePicker from 'react-native-datepicker'
 
 
-// import { Tile, List, ListItem } from 'react-native-elements';
 
 class EditMeProfile extends Component {
   constructor(props){
@@ -19,12 +19,11 @@ class EditMeProfile extends Component {
        phone: '',
        email: '',
        LastName: '',
-       location: ''
+       username: '',
+       city: ''
 
       }
    }
-
-
 
 
 phoneNumber(e){
@@ -49,9 +48,9 @@ changeEmail(e){
   })
 }
 
-chooseLocation(e){
+chooseCity(e){
   this.setState({
-    location: e.nativeEvent.text
+    city: e.nativeEvent.text
   })
 }
 
@@ -69,9 +68,9 @@ finishForm(e){
   var setPhone = this.state.phone == "" ? phone : this.state.phone;
   var setUsername = this.state.username == "" ? login.username : this.state.username;
   var setPhone = this.state.phone == "" ? phone : this.state.phone;
-  var setLocation = this.state.location = "" ? location.city : this.state.city;
+  var setCity = this.state.city == "" ? location.city : this.state.city
   var bday = dob.split(" ");
-
+  var setBday = this.state.date === dob[0] ? dob : this.state.date
 
   var obj = {
     name: {
@@ -79,13 +78,13 @@ finishForm(e){
       last: setLastName
     },
     location:{
-      city: setLocation
+      city: setCity
     },
     email: setEmail,
     login:{
       username: setUsername
     },
-    dob: bday[0],
+    dob: setBday,
     phone: setPhone
   }
   // This should save onto Redux somehow...
@@ -95,12 +94,14 @@ finishForm(e){
 
   render() {
 
-    const { name, email, phone, login, dob, location } = this.props.navigation.state.params;
+    const { picture, name, email, phone, login, dob, location } = this.props.navigation.state.params;
     return (
+      <ScrollView>
       <View style={styles.container}>
-       <Text style={styles.title}>Inputs</Text>
+       <Tile
+          imageSrc={{ uri: picture.large}}
+        />
 
-       <View>
 
        <InputText ref="firstInput"
                   required type="withLabel"
@@ -128,11 +129,17 @@ finishForm(e){
        <InputText ref="fourthInput" required type="withLabel"
                   keyboardType="numeric"
                   label="phone" placeholder={phone}
-                  nChange={(e)=>this.phoneNumber(e)}/>
+                  onChange={(e)=>this.phoneNumber(e)}/>
 
       <InputText ref="fifthInput" required type="withLabel"
                  label="Username" placeholder={login.username}
-                 nChange={(e)=>this.username(e)}/>
+                 onChange={(e)=>this.username(e)}/>
+
+     <InputText ref="sixthInput" required type="withLabel"
+                 label="City" placeholder={location.city}
+                onChange={(e)=>this.chooseCity(e)}
+                />
+
 
 
 
@@ -161,22 +168,19 @@ finishForm(e){
          }}
          onDateChange={(date) => {this.setState({date: date})}}
        />
+       </View>
 
-       <InputText ref="firstInput" required type="withLabel"
-                  label="city" placeholder={location.city}
-                  nChange={(e)=>this.chooseLocation(e)}/>
 
         <Button
           title="Done"
           buttonStyle={{ marginTop: 20 }}
           onPress={(e)=>this.finishForm(e)}
         />
-       </View>
 
 
-       </View>
 
      </View>
+     </ScrollView>
     )
   }
 }
