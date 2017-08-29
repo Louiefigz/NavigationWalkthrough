@@ -11,6 +11,7 @@
     "react-native": "0.46.1",
     "react-native-datepicker": "^1.6.0",
     "react-native-elements": "^0.13.0",
+    "react-native-image-picker": "^0.26.4",
     "react-native-input-list": "^1.6.2",
     "react-native-vector-icons": "^4.2.0",
     "react-navigation": "^1.0.0-beta.11",

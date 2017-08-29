@@ -26,6 +26,10 @@
 	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
+	<key>NSCameraUsageDescription</key>
+	<string> Camera Usage</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string> PhotoLibrary Usage</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

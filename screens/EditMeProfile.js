@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import { ScrollView, TextInput, button, form,} from 'react-native';
 import { InputText, InputCountrySelector, InputSwitch } from 'react-native-input-list';
-import { StyleSheet, Text, View, TouchableOpacity, Alert } from 'react-native';
+
+
+//add Image below
+import { StyleSheet, Text, View, TouchableOpacity, Alert, Image } from 'react-native';
+
+
 // changes
 import {Button, Tile} from 'react-native-elements';
+import DatePicker from 'react-native-datepicker';
 
-import DatePicker from 'react-native-datepicker'
+
+var ImagePicker = require('react-native-image-picker');
 
 
 
@@ -20,7 +27,8 @@ class EditMeProfile extends Component {
        email: '',
        LastName: '',
        username: '',
-       city: ''
+       city: '',
+       avatarSource: null
 
       }
    }
@@ -60,6 +68,42 @@ username(e){
   })
 }
 
+
+selectPhotoTapped() {
+    const options = {
+      quality: 1.0,
+      maxWidth: 500,
+      maxHeight: 500,
+      storageOptions: {
+        skipBackup: true
+      }
+    };
+    var _this = this;
+
+    ImagePicker.showImagePicker(options, (response) => {
+      console.log('Response = ', response)
+
+
+      if (response.didCancel) {
+        console.log('User cancelled photo picker');
+      }
+      else if (response.error) {
+        console.log('ImagePicker Error: ', response.error);
+      }
+      else if (response.customButton) {
+        console.log('User tapped custom button: ', response.customButton);
+      }
+      else {
+        let source = { uri: response.uri };
+        this.setState({
+          avatarSource: source
+        });
+
+      }
+    });
+  }
+
+
 finishForm(e){
   const { name, email, phone, login, dob, location } = this.props.navigation.state.params;
   var setFirstName = this.state.FirstName == "" ? name.first : this.state.FirstName;
@@ -92,16 +136,22 @@ finishForm(e){
 }
 
 
+
+
   render() {
 
     const { picture, name, email, phone, login, dob, location } = this.props.navigation.state.params;
     return (
       <ScrollView>
-      <View style={styles.container}>
-       <Tile
-          imageSrc={{ uri: picture.large}}
-        />
 
+      <View style={styles.container}>
+      <TouchableOpacity onPress={this.selectPhotoTapped.bind(this)}>
+        <View style={[styles.avatar, styles.avatarContainer, {marginBottom: 20}]}>
+          { this.state.avatarSource === null ?  <Image style={styles.avatar} source={{uri: picture.large}} /> :
+            <Image style={styles.avatar} source={this.state.avatarSource} />
+          }
+          </View>
+      </TouchableOpacity>
 
        <InputText ref="firstInput"
                   required type="withLabel"
@@ -204,6 +254,15 @@ const styles = StyleSheet.create({
   },
   inputStyles: {
     backgroundColor: 'green'
+  },
+  avatarContainer: {
+    borderColor: '#9B9B9B',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  avatar: {
+    width: 400,
+    height: 275
   }
 
 });
