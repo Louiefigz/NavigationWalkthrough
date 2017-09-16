@@ -5,13 +5,13 @@
  */
 
 import React, { Component } from 'react';
-import { Root } from './config/router';
+import { Tabs } from './config/router';
 import { AppRegistry } from 'react-native';
 
 export default class NavigationWalkthrough extends Component {
   render() {
     return (
-      < Root />
+      < Tabs />
     );
   }
 }
